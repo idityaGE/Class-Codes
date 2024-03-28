@@ -15,6 +15,18 @@ int areMatricesEqual(int mat1[100][100], int mat2[100][100], int rows, int cols)
     return 1;
 }
 
+void printMatrix(int mat[100][100], int rows, int cols)
+{
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < cols; j++)
+        {
+            printf("%d \t", mat[i][j]);
+        }
+        printf("\n");
+    }
+}
+
 int main()
 {
     int rows, cols;
@@ -45,6 +57,11 @@ int main()
             scanf("%d", &mat2[i][j]);
         }
     }
+
+    printf("First Matrix : \n");
+    printMatrix(mat1, rows, cols);
+    printf("\nSecond Matrix : \n");
+    printMatrix(mat2, rows, cols);
 
     if (areMatricesEqual(mat1, mat2, rows, cols))
     {
