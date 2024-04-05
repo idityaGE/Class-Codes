@@ -5,6 +5,8 @@
 
 //function to check if a number is a palindrome
 int isPalindrome(int num) {
+    if (num < 0) return 0;
+    
     int reversedNum = 0, originalNum = num;
     
     while (num != 0) {
