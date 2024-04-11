@@ -3,10 +3,10 @@
 #include <stdio.h>
 
 int main() {
-    int num = 10; // Declare and initialize an integer variable
-    int *ptr; // Declare a pointer variable
+    int num = 10;
+    int *ptr; 
 
-    ptr = &num; // Assign the address of 'num' to the pointer
+    ptr = &num;
 
     printf("Value of num: %d\n", num);
     printf("Address of num: %p\n", &num);
