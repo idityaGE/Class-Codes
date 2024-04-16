@@ -1,3 +1,5 @@
+// q3. WAP in c to swap two numbers using the functions
+
 #include <stdio.h>
 void swap(int *a, int *b){
     int temp = *a;

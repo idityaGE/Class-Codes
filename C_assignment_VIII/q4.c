@@ -1,5 +1,8 @@
+// q4. WAP in c to check whether a number is a prime number or not using the function.
+
 #include <stdio.h>
-int isPrime(int n){
+    int
+    isPrime(int n){
     if(n==1){
         return 0;
     }

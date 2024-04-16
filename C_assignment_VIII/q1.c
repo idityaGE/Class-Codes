@@ -1,3 +1,5 @@
+// q1. WAP in c to develop a function to compute the factorial of any number.
+
 #include<stdio.h>
 int Factorial(int n){
     if(n==0){

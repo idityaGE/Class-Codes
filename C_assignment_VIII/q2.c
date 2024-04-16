@@ -1,3 +1,5 @@
+// q2. WAP in c to develop a function to compute the power of any given number.
+
 #include <stdio.h>
 int Power(int x, int n){
     if(n==0){
