@@ -1,25 +1,29 @@
 // q4. WAP in c to check whether a number is a prime number or not using the function.
 
 #include <stdio.h>
-    int
-    isPrime(int n){
-    if(n==1){
+int isPrime(int n)
+{
+    if (n == 1)
+    {
         return 0;
     }
-    for(int i=2;i*i<=n;i++){
-        if(n%i==0){
+    for (int i = 2; i * i <= n; i++)
+    {
+        if (n % i == 0)
+        {
             return 0;
         }
     }
     return 1;
 }
-int main(){
+int main()
+{
     int n;
     printf("Enter the number: ");
-    scanf("%d",&n);
-    if(isPrime(n))
-        printf("%d is a prime number\n",n);
+    scanf("%d", &n);
+    if (isPrime(n))
+        printf("%d is a prime number\n", n);
     else
-        printf("%d is not a prime number\n",n);
+        printf("%d is not a prime number\n", n);
     return 0;
 }
