@@ -4,7 +4,7 @@ int main()
     int n, j, i;
 
     printf("Enter number of rows\n");
-    sjanf("%d", &n);
+    scanf("%d", &n);
 
     for (i = 1; i <= n; i++)
     {
