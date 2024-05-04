@@ -8,6 +8,14 @@ int sumOfRow(int matrix[MAX_ROWS][MAX_COLS], int col, int n){
     }
     return sum;
 }
+int sumOfCol(int matrix[MAX_ROWS][MAX_COLS], int row, int n){
+    int sum = 0;
+    for (int i = 0; i < row; i++)
+    {
+        sum += matrix[i][n];
+    }
+    return sum;
+}
 
 int main(){
     int rows, cols;
@@ -32,6 +40,11 @@ int main(){
     for (int i = 0; i < rows; i++){
         printf("Sum of row %d: %d\n", i+1, sumOfRow(matrix, cols, i));
     }
+    for (int  i = 0; i < cols; i++)
+    {
+        printf("Sum of col %d: %d\n", i+1, sumOfCol(matrix, rows, i));    
+    }
+    
     // sum of all elements in the matrix
     int sum = 0;
     for (int i = 0; i < rows; i++){
