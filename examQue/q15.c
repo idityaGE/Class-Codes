@@ -13,7 +13,7 @@ int main()
   {
     mergedArr[k++] = arr1[i++];
   }
-  while (j < a)
+  while (j < b)
   {
     mergedArr[k++] = arr2[j++];
   }
