@@ -15,7 +15,7 @@ int main(){
     }
     else
     {
-        c = tolower(c);
+        c = tolower(c); // convert to lowercase and for uppercase use toupper()
         for(int i = 0; i < strlen(str); i++){
             if(tolower(str[i]) == c){
                 printf("Character found at position: %d\n", ++i); //this will print the first occurrence of the character not all
