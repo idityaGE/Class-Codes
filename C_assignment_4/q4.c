@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 
-//An Armstrong number is a number that is the sum of its own digits each raised to the power of the number of digits
+//An Armstrong number is a number that is the sum of its own digits each raised to the power of the number of digits e.g. 153 = 1^3 + 5^3 + 3^3
 int isArmstrong(int num)
 {
     int originalNum, remainder, result = 0, n = 0;
