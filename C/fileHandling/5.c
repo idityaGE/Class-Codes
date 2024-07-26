@@ -19,6 +19,7 @@ int main()
   b1.price = 100.0;
   fwrite(&b1, sizeof(Book), 1, fptr); // fwrite() writes the data to the file
   // syntax: fwrite(address_of_data, size_of_data, number_of_data, file_pointer)
+  // fwrite() returns the number of data written to the file
 
   fclose(fptr);
 }
