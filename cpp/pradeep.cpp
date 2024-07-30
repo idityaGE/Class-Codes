@@ -27,8 +27,6 @@ int main(){
       temp->prev = present;
       present->next = temp ;
       present = temp;
-
-
     }
 
   }
