@@ -2,8 +2,7 @@
 using namespace std;
 
 // Fibonacci series -->  0 1 1 2 3 5 8 13 ....
-int fibonacciSeries(int n)
-{
+int fibonacciSeries(int n) {
   if (n == 2)
     return 1;
   if (n == 1)
@@ -11,8 +10,7 @@ int fibonacciSeries(int n)
   return fibonacciSeries(n - 1) + fibonacciSeries(n - 2);
 }
 
-int main()
-{
+int main() {
   int n;
   cout << "Enter the number : ";
   cin >> n;

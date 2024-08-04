@@ -1,10 +1,8 @@
 #include <iostream>
 using namespace std;
-void read_sparse_mat(int *mat_ele, int *mat_row, int *mat_col, int n)
-{
+void read_sparse_mat(int *mat_ele, int *mat_row, int *mat_col, int n) {
   cout << "Enter the elements of sparse matrix along with its row index and column index :" << endl;
-  for (int i = 0; i < n; i++)
-  {
+  for (int i = 0; i < n; i++) {
     cout << "Row no. : ";
     cin >> mat_row[i];
     cout << "Column no. : ";
@@ -14,20 +12,14 @@ void read_sparse_mat(int *mat_ele, int *mat_row, int *mat_col, int n)
   }
 }
 
-void print_sparse_mat(int *mat_ele, int *mat_row, int *mat_col, int n, int row, int col)
-{
+void print_sparse_mat(int *mat_ele, int *mat_row, int *mat_col, int n, int row, int col) {
   int k = 0;
-  for (int i = 0; i < row; i++)
-  {
-    for (int j = 0; j < col; j++)
-    {
-      if (i == mat_row[k] && j == mat_col[k])
-      {
+  for (int i = 0; i < row; i++) {
+    for (int j = 0; j < col; j++) {
+      if (i == mat_row[k] && j == mat_col[k]) {
         cout << mat_ele[k] << "  ";
         k++;
-      }
-      else
-      {
+      } else {
         cout << 0 << "  ";
       }
     }
@@ -35,48 +27,36 @@ void print_sparse_mat(int *mat_ele, int *mat_row, int *mat_col, int n, int row, 
   }
 }
 
-void readMatrix(int **arr, int r, int c)
-{
-  for (int i = 0; i < r; i++)
-  {
-    for (int j = 0; j < c; j++)
-    {
+void readMatrix(int **arr, int r, int c) {
+  for (int i = 0; i < r; i++) {
+    for (int j = 0; j < c; j++) {
       cout << "Enter the element of (" << i << "," << j << ") :";
       cin >> arr[i][j];
     }
   }
 }
 
-void printMatrix(int **arr, int r, int c)
-{
-  for (int i = 0; i < r; i++)
-  {
-    for (int j = 0; j < c; j++)
-    {
+void printMatrix(int **arr, int r, int c) {
+  for (int i = 0; i < r; i++) {
+    for (int j = 0; j < c; j++) {
       cout << arr[i][j] << "  ";
     }
     cout << endl;
   }
 }
 
-void add_sparse_and_simple_mat(int **sMat, int *mat_ele, int *mat_row, int *mat_col, int n, int row, int col)
-{
+void add_sparse_and_simple_mat(int **sMat, int *mat_ele, int *mat_row, int *mat_col, int n, int row, int col) {
   int **sumMat;
   sumMat = new int *[row];
   for (int i = 0; i < row; i++)
     sumMat[i] = new int[col];
   int k = 0;
-  for (int i = 0; i < row; i++)
-  {
-    for (int j = 0; j < col; j++)
-    {
-      if (i == mat_row[k] && j == mat_col[k])
-      {
+  for (int i = 0; i < row; i++) {
+    for (int j = 0; j < col; j++) {
+      if (i == mat_row[k] && j == mat_col[k]) {
         sumMat[i][j] = sMat[i][j] + mat_ele[k];
         k++;
-      }
-      else
-      {
+      } else {
         sumMat[i][j] = sMat[i][j];
       }
     }
@@ -85,8 +65,7 @@ void add_sparse_and_simple_mat(int **sMat, int *mat_ele, int *mat_row, int *mat_
   printMatrix(sumMat, row, col);
 }
 
-int main()
-{
+int main() {
   int row, col, n;
   cout << "Enter the number of rows: ";
   cin >> row;

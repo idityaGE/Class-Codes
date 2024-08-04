@@ -1,33 +1,28 @@
-#include <iostream>
 #include <cmath>
+#include <iostream>
 using namespace std;
 
-struct Polynomial
-{
+struct Polynomial {
   int degree;
   int *coefficients;
 };
 
-double cal_poly(Polynomial &poly, double x)
-{
+double cal_poly(Polynomial &poly, double x) {
   double result = 0;
-  for (int i = 0; i <= poly.degree; i++)
-  {
+  for (int i = 0; i <= poly.degree; i++) {
     result += poly.coefficients[i] * pow(x, i);
   }
   return result;
 }
 
-int main()
-{
+int main() {
   Polynomial poly;
   cout << "Enter the degree of the polynomial: ";
   cin >> poly.degree;
 
   poly.coefficients = new int[poly.degree + 1];
   cout << "Enter the coefficients of the polynomial: " << endl;
-  for (int i = 0; i <= poly.degree; i++)
-  {
+  for (int i = 0; i <= poly.degree; i++) {
     cout << "Enter the coefficient of x^" << i << " : ";
     cin >> poly.coefficients[i];
   }

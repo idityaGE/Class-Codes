@@ -1,34 +1,28 @@
-#include "matrix_fn.h"
 #include <iostream>
+
+#include "matrix_fn.h"
 using namespace std;
 
-void print_lower_diagonal_matrix(int *mat, int r)
-{
+void print_lower_diagonal_matrix(int *mat, int r) {
   int k = 0;
-  for (int i = 0; i < r; i++)
-  {
-    for (int j = 0; j <= i; j++)
-    {
+  for (int i = 0; i < r; i++) {
+    for (int j = 0; j <= i; j++) {
       cout << mat[k++] << "  ";
     }
-    for (int j = 0; j < r - i - 1; j++)
-    {
+    for (int j = 0; j < r - i - 1; j++) {
       cout << 0 << "  ";
     }
     cout << endl;
   }
 }
-void input_lower_diagonal_matrix(int *mat, int n)
-{
-  for (int i = 0; i < n; i++)
-  {
+void input_lower_diagonal_matrix(int *mat, int n) {
+  for (int i = 0; i < n; i++) {
     cout << "Enter the element of lower_diagonal_matrix :";
     cin >> mat[i];
   }
 }
 
-void add_matrix(int *dMat, int **sMat, int r)
-{
+void add_matrix(int *dMat, int **sMat, int r) {
   int **sumMat;
   sumMat = new int *[r];
   for (int i = 0; i < r; i++)
@@ -36,14 +30,11 @@ void add_matrix(int *dMat, int **sMat, int r)
 
   int l = 0;
 
-  for (int i = 0; i < r; i++)
-  {
-    for (int j = 0; j <= i; j++)
-    {
+  for (int i = 0; i < r; i++) {
+    for (int j = 0; j <= i; j++) {
       sumMat[i][j] = sMat[i][j] + dMat[l++];
     }
-    for (int k = i + 1; k < r; k++)
-    {
+    for (int k = i + 1; k < r; k++) {
       sumMat[i][k] = sMat[i][k];
     }
   }
@@ -51,8 +42,7 @@ void add_matrix(int *dMat, int **sMat, int r)
   display_matrix(sumMat, r);
 }
 
-int main()
-{
+int main() {
   int r;
   cout << "Enter the number of rows and columns (square matrix) : ";
   cin >> r;

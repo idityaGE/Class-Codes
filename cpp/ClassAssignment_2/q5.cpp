@@ -1,14 +1,12 @@
 #include <iostream>
 using namespace std;
-int sumofN(int n)
-{
+int sumofN(int n) {
   if (n == 1)
     return 1;
   return sumofN(n - 1) + n;
 }
 
-int main()
-{
+int main() {
   int n;
   cout << "Enter the number : ";
   cin >> n;
