@@ -1,27 +1,19 @@
 #include <iostream>
 using namespace std;
 
-void input_Diagonal_matrix(int *arr, int r)
-{
-  for (int i = 0; i < r; i++)
-  {
+void input_Diagonal_matrix(int *arr, int r) {
+  for (int i = 0; i < r; i++) {
     cout << "Enter the element of (" << i << "," << i << ") :";
     cin >> arr[i];
   }
 }
 
-void display_Diagonal_matrix(int *arr, int r)
-{
-  for (int i = 0; i < r; i++)
-  {
-    for (int j = 0; j < r; j++)
-    {
-      if (i == j)
-      {
+void display_Diagonal_matrix(int *arr, int r) {
+  for (int i = 0; i < r; i++) {
+    for (int j = 0; j < r; j++) {
+      if (i == j) {
         cout << 1 << "  ";
-      }
-      else
-      {
+      } else {
         cout << 0 << "  ";
       }
     }
@@ -29,41 +21,32 @@ void display_Diagonal_matrix(int *arr, int r)
   }
 }
 
-void read_matrix(int **arr, int r)
-{
-  for (int i = 0; i < r; i++)
-  {
-    for (int j = 0; j < r; j++)
-    {
+void read_matrix(int **arr, int r) {
+  for (int i = 0; i < r; i++) {
+    for (int j = 0; j < r; j++) {
       cout << "Enter the element of (" << i << "," << j << ") :";
       cin >> arr[i][j];
     }
   }
 }
 
-void display_matrix(int **arr, int r)
-{
-  for (int i = 0; i < r; i++)
-  {
-    for (int j = 0; j < r; j++)
-    {
+void display_matrix(int **arr, int r) {
+  for (int i = 0; i < r; i++) {
+    for (int j = 0; j < r; j++) {
       cout << arr[i][j] << "  ";
     }
     cout << endl;
   }
 }
 
-void add_matrix(int *dArr, int **sArr, int r)
-{
+void add_matrix(int *dArr, int **sArr, int r) {
   int **sumArr;
   sumArr = new int *[r];
   for (int i = 0; i < r; i++)
     sumArr[i] = new int[r];
 
-  for (int i = 0; i < r; i++)
-  {
-    for (int j = 0; j < r; j++)
-    {
+  for (int i = 0; i < r; i++) {
+    for (int j = 0; j < r; j++) {
       if (i == j)
         sumArr[i][j] = sArr[i][j] + dArr[i];
       else
@@ -74,8 +57,7 @@ void add_matrix(int *dArr, int **sArr, int r)
   display_matrix(sumArr, r);
 }
 
-int main()
-{
+int main() {
   int r;
   cout << "Enter the number of rows and columns (square matrix) : ";
   cin >> r;
