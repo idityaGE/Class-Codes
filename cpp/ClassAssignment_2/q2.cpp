@@ -58,6 +58,10 @@ void add_matrix(int *dMat, int **sMat, int r) {
   }
   cout << "Sum of Lower Diagonal and Simple Matrix : " << endl;
   display_matrix(sumMat, r);
+
+  for (int i = 0; i < r; i++)
+    delete[] sumMat[i];
+  delete[] sumMat;
 }
 
 int main() {
@@ -82,6 +86,11 @@ int main() {
   display_matrix(sMat, r);
 
   add_matrix(ld_mat, sMat, r);
+
+  delete[] ld_mat;
+  for (int i = 0; i < r; i++)
+    delete[] sMat[i];
+  delete[] sMat;
 
   return 0;
 }

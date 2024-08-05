@@ -65,6 +65,10 @@ void add_sparse_and_simple_mat(int **sMat, int *mat_ele, int *mat_row, int *mat_
   }
   cout << "Sum of sparse and simple Matrix :" << endl;
   printMatrix(sumMat, row, col);
+
+  for (int i = 0; i < row; i++)
+    delete[] sumMat[i];
+  delete[] sumMat;
 }
 int main() {
   int row, col, n;
@@ -89,5 +93,13 @@ int main() {
   cout << "Simple Matrix :" << endl;
   printMatrix(sMat, row, col);
   add_sparse_and_simple_mat(sMat, sparse_mat_ele, sparse_mat_row, sparse_mat_col, n, row, col);
+
+  for (int i = 0; i < row; i++)
+    delete[] sMat[i];
+  delete[] sMat;
+  delete[] sparse_mat_ele;
+  delete[] sparse_mat_row;
+  delete[] sparse_mat_col;
+
   return 0;
 }

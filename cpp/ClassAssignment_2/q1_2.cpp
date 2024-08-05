@@ -58,6 +58,11 @@ void add_matrix(int *dArr, int **sArr, int r) {
   }
   cout << "Sum of Diagonal and Simple Matrix : " << endl;
   display_matrix(sumArr, r);
+
+  // Freeing the memory
+  for (int i = 0; i < r; i++)
+    delete[] sumArr[i];
+  delete[] sumArr;
 }
 
 int main() {
@@ -81,5 +86,12 @@ int main() {
   display_matrix(sArr, r);
 
   add_matrix(dArr, sArr, r);
+
+  // Freeing the memory
+  delete[] dArr;
+  for (int i = 0; i < r; i++)
+    delete[] sArr[i];
+  delete[] sArr;
+
   return 0;
 }

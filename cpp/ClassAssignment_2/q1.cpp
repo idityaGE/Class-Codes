@@ -23,6 +23,10 @@ void addMatrix(int **arr1, int **arr2, int r, int c) {
   }
   cout << "Sum of Diagonal and simple Matrix :" << endl;
   printMatrix(sum, r, c);
+
+  for (int i = 0; i < r; i++)
+    delete[] sum[i];
+  delete[] sum;
 }
 
 void readMatrix(int **arr, int r, int c) {
@@ -82,6 +86,14 @@ int main() {
 
   cout << "Sum of Diagonal and Simple Matrix: " << endl;
   printMatrix(sum, r, c);
+
+  for (int i = 0; i < r; i++) {
+    delete[] sArr[i];
+    delete[] sum[i];
+  }
+  delete[] sArr;
+  delete[] sum;
+  delete[] dArr;
 
   return 0;
 }
