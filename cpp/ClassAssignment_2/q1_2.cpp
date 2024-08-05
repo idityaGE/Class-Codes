@@ -1,3 +1,5 @@
+//! Q1-> Write a C++ program to store a diagonal matrix. Also, performs addition of this diagonal matrix with another simple matrix. [Assume only square matrix for this]
+
 #include <iostream>
 using namespace std;
 
@@ -9,10 +11,11 @@ void input_Diagonal_matrix(int *arr, int r) {
 }
 
 void display_Diagonal_matrix(int *arr, int r) {
+  int k = 0;
   for (int i = 0; i < r; i++) {
     for (int j = 0; j < r; j++) {
       if (i == j) {
-        cout << 1 << "  ";
+        cout << arr[k++] << "  ";
       } else {
         cout << 0 << "  ";
       }

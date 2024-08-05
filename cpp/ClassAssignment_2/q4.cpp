@@ -1,3 +1,5 @@
+//! Q4-> Write a C++ program to represent the polynomial equation using structure. Also, write the function to evaluate the polynomial equation for a given value of x.
+
 #include <cmath>
 #include <iostream>
 using namespace std;

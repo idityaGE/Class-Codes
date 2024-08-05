@@ -1,3 +1,5 @@
+//! Q5-> Write a C++ program to compute the sum of n natural numbers using recursion.
+
 #include <iostream>
 using namespace std;
 int sumofN(int n) {

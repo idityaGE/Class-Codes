@@ -1,3 +1,6 @@
+//! Q8-> Write a C++ program to compute following equation up to the n term using recursion:
+//! e^x = 1 + x/1! + x^2/2! + x^3/3! + ...
+
 #include <iostream>
 using namespace std;
 int fact(int n) {

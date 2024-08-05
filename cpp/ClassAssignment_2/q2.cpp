@@ -1,6 +1,6 @@
-#include <iostream>
+//! Q2-> Write a C++ program to store lower triangular matrix. Also, performs addition of this lower triangular matrix with another simple matrix. [Assume only square matrix for this]
 
-#include "matrix_fn.h"
+#include <iostream>
 using namespace std;
 
 void print_lower_diagonal_matrix(int *mat, int r) {
@@ -19,6 +19,24 @@ void input_lower_diagonal_matrix(int *mat, int n) {
   for (int i = 0; i < n; i++) {
     cout << "Enter the element of lower_diagonal_matrix :";
     cin >> mat[i];
+  }
+}
+
+void read_matrix(int **mat, int r) {
+  for (int i = 0; i < r; i++) {
+    for (int j = 0; j < r; j++) {
+      cout << "Enter the element of (" << i << "," << j << ") :";
+      cin >> mat[i][j];
+    }
+  }
+}
+
+void display_matrix(int **mat, int r) {
+  for (int i = 0; i < r; i++) {
+    for (int j = 0; j < r; j++) {
+      cout << mat[i][j] << "  ";
+    }
+    cout << endl;
   }
 }
 
