@@ -107,19 +107,62 @@ float avg(Array *a) {
     float sum = 0;
     for (int i = 0; i <= a->cp; i++)
       sum += a->arr[i];
-    return sum/(a->cp+1);
+    return sum / (a->cp + 1);
   }
 }
 
-void insert(Array *a, int index, int ele){
-
+int get(Array *a, int index) {
+  if (a->cp == -1)
+    cout << "Array is empty" << endl;
+  else if (index > a->cp || index < 0) {
+    cout << "Wrong Index" << endl;
+    return 0;
+  } else
+    return a->arr[index];
 }
 
-void rem(Array *a, int index){
-
+void insert(Array *a, int index, int ele) {
+  if (a->cp == a->size - 1)
+    cout << "Array is full" << endl;
+  else if (index > a->cp + 1 || index < 0)
+    cout << "Wrong Index" << endl;
+  else {
+    for (int i = a->cp; i >= index; i--)
+      a->arr[i + 1] = a->arr[i];
+    a->arr[index] = ele;
+    a->cp++;
+  }
 }
 
+void rem(Array *a, int index) {
+  if (a->cp == -1)
+    cout << "Array is empty" << endl;
+  else if (0 > index || index > a->cp)
+    cout << "Wrong Index" << endl;
+  else {
+    for (int i = index; i < a->cp; i++)
+      a->arr[i] = a->arr[i + 1];
+    a->arr[a->cp] = garbageVal;
+    a->cp--;
+  }
+}
 
+void sort(Array *a) {
+  if (a->cp == -1)
+    cout << "Array is empty" << endl;
+  else {
+    for (int i = a->cp - 1; i >= 0; i--) {
+      bool isSwapped = false;
+      for (int j = 0; j <= i; j++) {
+        if (a->arr[j] > a->arr[j + 1]) {
+          swap(a->arr[j], a->arr[j + 1]);
+          isSwapped = true;
+        }
+      }
+      if (!isSwapped) break;
+    }
+  }
+}
 
 int main() {
   int size;
@@ -129,12 +172,14 @@ int main() {
   createArr(&a, size);
   readArr(&a);
   printArr(&a);
-  cout << len(&a) << endl;
-  unshift(&a);
+  rem(&a, 3);
   printArr(&a);
-  pop(&a);
+  rem(&a, 3);
   printArr(&a);
-  cout << len(&a);
+  insert(&a, 2, 9);
+  printArr(&a);
+  sort(&a);
+  printArr(&a);
 
   return 0;
 }
