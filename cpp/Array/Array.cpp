@@ -100,15 +100,23 @@ int max(Array *a) {
   }
 }
 
-int avg(Array *a) {
+float avg(Array *a) {
   if (a->cp == -1)
     cout << "Array is empty" << endl;
   else {
-    int sum = 0;
+    float sum = 0;
     for (int i = 0; i <= a->cp; i++)
       sum += a->arr[i];
     return sum/(a->cp+1);
   }
+}
+
+void insert(Array *a, int index, int ele){
+
+}
+
+void rem(Array *a, int index){
+
 }
 
 
