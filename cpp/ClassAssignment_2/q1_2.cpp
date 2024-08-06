@@ -47,7 +47,6 @@ void add_matrix(int *dArr, int **sArr, int r) {
   sumArr = new int *[r];
   for (int i = 0; i < r; i++)
     sumArr[i] = new int[r];
-
   for (int i = 0; i < r; i++) {
     for (int j = 0; j < r; j++) {
       if (i == j)
@@ -58,13 +57,11 @@ void add_matrix(int *dArr, int **sArr, int r) {
   }
   cout << "Sum of Diagonal and Simple Matrix : " << endl;
   display_matrix(sumArr, r);
-
   // Freeing the memory
   for (int i = 0; i < r; i++)
     delete[] sumArr[i];
   delete[] sumArr;
 }
-
 int main() {
   int r;
   cout << "Enter the number of rows and columns (square matrix) : ";
@@ -86,12 +83,9 @@ int main() {
   display_matrix(sArr, r);
 
   add_matrix(dArr, sArr, r);
-
-  // Freeing the memory
   delete[] dArr;
   for (int i = 0; i < r; i++)
     delete[] sArr[i];
   delete[] sArr;
-
   return 0;
 }

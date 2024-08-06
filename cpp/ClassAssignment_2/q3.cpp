@@ -13,7 +13,6 @@ void read_sparse_mat(int *mat_ele, int *mat_row, int *mat_col, int n) {
     cin >> mat_ele[i];
   }
 }
-
 void print_sparse_mat(int *mat_ele, int *mat_row, int *mat_col, int n, int row, int col) {
   int k = 0;
   for (int i = 0; i < row; i++) {
@@ -23,30 +22,22 @@ void print_sparse_mat(int *mat_ele, int *mat_row, int *mat_col, int n, int row, 
         k++;
       } else {
         cout << 0 << "  ";
-      }
-    }
+      }}
     cout << endl;
-  }
-}
-
+}}
 void readMatrix(int **arr, int r, int c) {
   for (int i = 0; i < r; i++) {
     for (int j = 0; j < c; j++) {
       cout << "Enter the element of (" << i << "," << j << ") :";
       cin >> arr[i][j];
-    }
-  }
-}
-
+}}}
 void printMatrix(int **arr, int r, int c) {
   for (int i = 0; i < r; i++) {
     for (int j = 0; j < c; j++) {
       cout << arr[i][j] << "  ";
     }
     cout << endl;
-  }
-}
-
+}}
 void add_sparse_and_simple_mat(int **sMat, int *mat_ele, int *mat_row, int *mat_col, int n, int row, int col) {
   int **sumMat;
   sumMat = new int *[row];
@@ -60,12 +51,9 @@ void add_sparse_and_simple_mat(int **sMat, int *mat_ele, int *mat_row, int *mat_
         k++;
       } else {
         sumMat[i][j] = sMat[i][j];
-      }
-    }
-  }
+  }}}
   cout << "Sum of sparse and simple Matrix :" << endl;
   printMatrix(sumMat, row, col);
-
   for (int i = 0; i < row; i++)
     delete[] sumMat[i];
   delete[] sumMat;
@@ -93,13 +81,11 @@ int main() {
   cout << "Simple Matrix :" << endl;
   printMatrix(sMat, row, col);
   add_sparse_and_simple_mat(sMat, sparse_mat_ele, sparse_mat_row, sparse_mat_col, n, row, col);
-
   for (int i = 0; i < row; i++)
     delete[] sMat[i];
   delete[] sMat;
   delete[] sparse_mat_ele;
   delete[] sparse_mat_row;
   delete[] sparse_mat_col;
-
   return 0;
 }
