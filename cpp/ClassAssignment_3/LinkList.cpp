@@ -53,25 +53,62 @@ void display(NODE *p) {
   }
 }
 
-void display_in_reverse(NODE *p){
-  if(p == NULL)
+void display_in_reverse(NODE *p) {
+  if (p == NULL)
     cout << "List is empty" << endl;
   else {
-    if(p->next != NULL)
+    if (p->next != NULL)
       display_in_reverse(p->next);
     cout << p->data << " ";
   }
 }
 
-int main() {
-  NODE *ll;
-  ll = NULL;
-  ll = create(ll, 10);
-  ll = insert_at_end(ll, 20);
-  ll = insert_at_end(ll, 30);
-  ll = insert_at_beg(ll, 0);
-  display(ll);
-  display_in_reverse(ll);
+bool search(NODE *p, int data) {
+  if (p == NULL)
+    cout << "List is empty" << endl;
+  else {
+    NODE *temp;
+    temp = p;
+    while (temp != NULL) {
+      if (temp->data == data)
+        return true;
+      temp = temp->next;
+    }
+    return false;
+  }
+}
 
+NODE *merge(NODE *p1, NODE *p2) {
+  if (p1 == NULL)
+    return p2;
+  if (p2 == NULL)
+    return p1;
+  else {
+    NODE *temp;
+    temp = p1;
+    while (temp->next != NULL)
+      temp = temp->next;
+    temp->next = p2;
+    return p1;
+  }
+}
+
+int main() {
+  NODE *l1;
+  l1 = NULL;
+  l1 = create(l1, 10);
+  l1 = insert_at_end(l1, 20);
+  l1 = insert_at_end(l1, 30);
+  l1 = insert_at_beg(l1, 0);
+  display(l1);
+  NODE *l2;
+  l2 = NULL;
+  l2 = create(l2, 40);
+  l1 = merge(l1, l2);
+  display(l1);
+  if (search(l1, 50)) {
+    cout << "found";
+  } else
+    cout << "Not Found";
   return 0;
 }
