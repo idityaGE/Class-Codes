@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <numeric>
 using namespace std;
 
 int main() {
@@ -95,6 +96,13 @@ int main() {
   }
   cout << endl;
 
+  // Iterating using range-based for loop
+  cout << "Iterating using range-based for loop:" << endl;
+  for(auto i: v) {
+    cout << i << " ";
+  }
+  cout << endl;
+
   // Iterating in reverse
   cout << "Iterating in reverse:" << endl;
   vector<int>::reverse_iterator rit;
@@ -160,6 +168,7 @@ int main() {
   cout << "Finding elements:" << endl;
   vector<int> v4 = {1, 2, 3, 4, 5};
   auto it1 = find(v4.begin(), v4.end(), 3); // Returns an iterator to the element 3
+  cout << "Element found at index: " << it1 - v4.begin() << endl;
   if (it1 != v4.end()) {
     cout << "Element found" << endl;
   } else {
@@ -221,6 +230,69 @@ int main() {
   vector<int> v11 = {1, 2, 3, 4, 5};
   auto it5 = find(v11.begin(), v11.end(), 3);
   cout << "Distance from beginning to 3: " << distance(v11.begin(), it5) << endl;
+
+  // Reversing vector
+  cout << "Reversing vector:" << endl;
+  vector<int> v12 = {1, 2, 3, 4, 5};
+  reverse(v12.begin(), v12.end());
+  for (auto i = v12.begin(); i != v12.end(); i++) {
+    cout << *i << " ";
+  }
+  cout << endl;
+
+  // Copying vector
+  cout << "Copying vector:" << endl;
+  vector<int> v13 = {1, 2, 3, 4, 5};
+  vector<int> v14(5);
+  copy(v13.begin(), v13.end(), v14.begin());
+  for (auto i = v14.begin(); i != v14.end(); i++) {
+    cout << *i << " ";
+  }
+  cout << endl;
+
+  // Filling vector
+  cout << "Filling vector:" << endl;
+  vector<int> v15(5);
+  fill(v15.begin(), v15.end(), 10);  // Fills the vector with 10
+  for (auto i = v15.begin(); i != v15.end(); i++) {
+    cout << *i << " ";
+  }
+  cout << endl;
+
+  // Generating iota
+  cout << "Generating iota:" << endl;
+  vector<int> v16(5);
+  iota(v16.begin(), v16.end(), 1);  // Generates 1, 2, 3, 4, 5
+  for (auto i = v16.begin(); i != v16.end(); i++) {
+    cout << *i << " ";
+  }
+  cout << endl;
+
+  // Accumulating elements
+  cout << "Accumulating elements:" << endl;
+  vector<int> v17 = {1, 2, 3, 4, 5};
+  int sum = accumulate(v17.begin(), v17.end(), 0);  // Calculates the sum of elements
+  cout << "Sum of elements: " << sum << endl;
+
+  // Checking if vector is sorted
+  cout << "Checking if vector is sorted:" << endl;
+  vector<int> v18 = {1, 2, 3, 4, 5};
+  cout << "Is vector sorted? " << (std::is_sorted(v18.begin(), v18.end()) ? "Yes" : "No") << endl;
+
+  vector<int> v19 = {5, 4, 3, 2, 1};
+  cout << "Is vector sorted? " << (std::is_sorted(v19.begin(), v19.end()) ? "Yes" : "No") << endl;
+
+  // lower_bound and upper_bound
+  cout << "lower_bound and upper_bound:" << endl;
+  vector<int> v20 = {1, 2, 3, 4, 5};
+  auto lb = lower_bound(v20.begin(), v20.end(), 3);  // Returns an iterator to the first element not less than 3
+  cout << "Lower bound of 3: " << *lb << endl;
+
+  auto ub = upper_bound(v20.begin(), v20.end(), 3);  // Returns an iterator to the first element greater than 3
+  cout << "Upper bound of 3: " << *ub << endl;
+  
+
+
 
   return 0;
 }
