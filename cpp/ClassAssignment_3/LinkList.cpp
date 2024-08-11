@@ -70,6 +70,7 @@ NODE *insert_at_sorted_pos(NODE *p, int data) {
   if (p == NULL)
     p = create(p, data);
   else {
+    sort(p);
     NODE *temp, *temp1;
     temp = p;
     while (temp->next != NULL && temp->next->data < data)
@@ -237,37 +238,10 @@ NODE *merge_sorted(NODE *p1, NODE *p2) {
   if (p2 == NULL)
     return p1;
   else {
-    NODE *temp1, *temp2, *temp3;
-    temp1 = p1;
-    temp2 = p2;
-    temp3 = NULL;
-    while (temp1 != NULL && temp2 != NULL) {
-      if (temp1->data < temp2->data) {
-        if (temp3 == NULL) {
-          temp3 = temp1;
-          p1 = temp3;
-        } else {
-          temp3->next = temp1;
-          temp3 = temp3->next;
-        }
-        temp1 = temp1->next;
-      } else {
-        if (temp3 == NULL) {
-          temp3 = temp2;
-          p1 = temp3;
-        } else {
-          temp3->next = temp2;
-          temp3 = temp3->next;
-        }
-        temp2 = temp2->next;
-      }
-    }
-    if (temp1 == NULL)
-      temp3->next = temp2;
-    else
-      temp3->next = temp1;
-    return p1;
+    p1 = merge(p1, p2);
+    p1 = sort(p1);
   }
+  return p1;
 }
 
 int main() {
@@ -275,12 +249,15 @@ int main() {
   Head_1 = NULL;
   Head_1 = create(Head_1, 10);
   Head_1 = insert_at_end(Head_1, 20);
-  Head_1 = insert_at_end(Head_1, 30);
   Head_1 = insert_at_end(Head_1, 40);
-
-  Head_1 = delete_at_pos(Head_1, 3);
+  Head_1 = insert_at_end(Head_1, 30);
+  Head_1 = insert_at_end(Head_1, 5);
 
   display(Head_1);
-  
+
+  Head_1 = sort(Head_1);
+
+  display(Head_1);
+
   return 0;
 }
