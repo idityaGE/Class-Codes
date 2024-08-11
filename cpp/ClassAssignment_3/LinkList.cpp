@@ -43,20 +43,25 @@ NODE *insert_at_pos(NODE *p, int data, int pos) {
   if (p == NULL)
     p = create(p, data);
   else {
-    NODE *temp, *temp1;
-    temp = p;
-    for (int i = 1; i < pos - 1; i++) {
-      if (temp->next != NULL)
-        temp = temp->next;
-      else {
-        cout << "Position not found" << endl;
-        return p;
+    if (pos == 1) {
+      p = insert_at_beg(p, data);
+    } else {
+      NODE *temp, *temp1;
+      temp = p;
+      for (int i = 1; i < pos - 1; i++) {
+        if (temp->next != NULL)
+          temp = temp->next;
+        else {
+          cout << "Position not found" << endl;
+          delete temp, temp1;
+          return p;
+        }
       }
+      temp1 = new NODE;
+      temp1->data = data;
+      temp1->next = temp->next;
+      temp->next = temp1;
     }
-    temp1 = new NODE;
-    temp1->data = data;
-    temp1->next = temp->next;
-    temp->next = temp1;
   }
   return p;
 }
@@ -84,11 +89,11 @@ NODE *delete_at_end(NODE *p) {
     NODE *temp, *temp1;
     temp = p;
     while (temp->next != NULL) {
-      temp1 = temp;
       temp = temp->next;
     }
-    temp1->next = NULL;
-    delete temp;
+    temp1 = temp->next;
+    temp->next = NULL;
+    delete temp1;
   }
   return p;
 }
@@ -109,19 +114,65 @@ NODE *delete_at_pos(NODE *p, int pos) {
   if (p == NULL)
     cout << "List is empty" << endl;
   else {
+    if (pos == 1) {
+      p = delete_at_beg(p);
+    } else {
+      NODE *temp, *temp1;
+      temp = p;
+      for (int i = 1; i < pos - 1; i++) {
+        if (temp->next != NULL)
+          temp = temp->next;
+        else {
+          cout << "Position not found" << endl;
+          delete temp, temp1;
+          return p;
+        }
+      }
+      temp1 = temp->next;
+      temp->next = temp1->next;
+      delete temp1;
+    }
+  }
+  return p;
+}
+
+NODE *delete_at_data(NODE *p, int data) {
+  if (p == NULL)
+    cout << "List is empty" << endl;
+  else {
     NODE *temp, *temp1;
     temp = p;
-    for (int i = 1; i < pos - 1; i++) {
-      if (temp->next != NULL)
-        temp = temp->next;
-      else {
-        cout << "Position not found" << endl;
-        return p;
-      }
+    while (temp->next != NULL && temp->next->data != data)
+      temp = temp->next;
+    if (temp->next == NULL)
+      cout << "Data not found" << endl;
+    else {
+      temp1 = temp->next;
+      temp->next = temp1->next;
+      delete temp1;
     }
-    temp1 = temp->next;
-    temp->next = temp1->next;
-    delete temp1;
+  }
+  return p;
+}
+
+NODE *sort(NODE *p) {
+  if (p == NULL)
+    cout << "List is empty" << endl;
+  else {
+    NODE *temp1, *temp2;
+    temp1 = p;
+    while (temp1 != NULL) {
+      temp2 = temp1->next;
+      while (temp2 != NULL) {
+        if (temp1->data > temp2->data) {
+          int temp = temp1->data;
+          temp1->data = temp2->data;
+          temp2->data = temp;
+        }
+        temp2 = temp2->next;
+      }
+      temp1 = temp1->next;
+    }
   }
   return p;
 }
@@ -225,16 +276,11 @@ int main() {
   Head_1 = create(Head_1, 10);
   Head_1 = insert_at_end(Head_1, 20);
   Head_1 = insert_at_end(Head_1, 30);
-  Head_1 = insert_at_beg(Head_1, 0);
+  Head_1 = insert_at_end(Head_1, 40);
+
+  Head_1 = delete_at_pos(Head_1, 3);
+
   display(Head_1);
-  NODE *Head_2;
-  Head_2 = NULL;
-  Head_2 = create(Head_2, 40);
-  Head_1 = merge(Head_1, Head_2);
-  display(Head_1);
-  if (search(Head_1, 50)) {
-    cout << "found";
-  } else
-    cout << "Not Found";
+  
   return 0;
 }
