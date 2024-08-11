@@ -253,11 +253,75 @@ int main() {
   Head_1 = insert_at_end(Head_1, 30);
   Head_1 = insert_at_end(Head_1, 5);
 
+  cout << "Original List: ";
   display(Head_1);
 
   Head_1 = sort(Head_1);
 
+  cout << "Sorted List: ";
   display(Head_1);
+
+  int data = 25;
+  int pos = 3;
+  Head_1 = insert_at_pos(Head_1, data, pos);
+
+  cout << "List after inserting " << data << " at position " << pos << ": ";
+  display(Head_1);
+
+  data = 15;
+  Head_1 = insert_at_sorted_pos(Head_1, data);
+
+  cout << "List after inserting " << data << " at sorted position: ";
+  display(Head_1);
+
+  Head_1 = delete_at_end(Head_1);
+
+  cout << "List after deleting last element: ";
+  display(Head_1);
+
+  Head_1 = delete_at_beg(Head_1);
+
+  cout << "List after deleting first element: ";
+  display(Head_1);
+
+  pos = 2;
+  Head_1 = delete_at_pos(Head_1, pos);
+
+  cout << "List after deleting element at position " << pos << ": ";
+  display(Head_1);
+
+  data = 40;
+  Head_1 = delete_at_data(Head_1, data);
+
+  cout << "List after deleting element with data " << data << ": ";
+  display(Head_1);
+
+  int search_data = 30;
+  bool found = search(Head_1, search_data);
+
+  if (found)
+    cout << "Element " << search_data << " found in the list" << endl;
+  else
+    cout << "Element " << search_data << " not found in the list" << endl;
+
+  NODE *Head_2;
+  Head_2 = NULL;
+  Head_2 = create(Head_2, 50);
+  Head_2 = insert_at_end(Head_2, 60);
+  Head_2 = insert_at_end(Head_2, 70);
+
+  cout << "Second List: ";
+  display(Head_2);
+
+  NODE *Merged_Head = merge(Head_1, Head_2);
+
+  cout << "Merged List: ";
+  display(Merged_Head);
+
+  NODE *Sorted_Merged_Head = merge_sorted(Head_1, Head_2);
+
+  cout << "Sorted Merged List: ";
+  display(Sorted_Merged_Head);
 
   return 0;
 }
