@@ -164,6 +164,12 @@ void sort(Array *a) {
   }
 }
 
+void clear(Array *a){
+  delete[] a->arr;
+  a->cp = -1;
+  cout << "Array deleted successfully." << endl;
+}
+
 int main() {
   Array arr;
   int size;
@@ -173,118 +179,39 @@ int main() {
 
   createArr(&arr, size);
 
-  int choice;
-  do {
-    cout << "\nMenu:\n";
-    cout << "1. Push\n";
-    cout << "2. Pop\n";
-    cout << "3. Shift\n";
-    cout << "4. Unshift\n";
-    cout << "5. Print Array\n";
-    cout << "6. Read Array\n";
-    cout << "7. Length\n";
-    cout << "8. Minimum\n";
-    cout << "9. Maximum\n";
-    cout << "10. Average\n";
-    cout << "11. Get\n";
-    cout << "12. Insert\n";
-    cout << "13. Remove\n";
-    cout << "14. Sort\n";
-    cout << "0. Exit\n";
+  cout << "Enter the elements of the array: " << endl;
+  readArr(&arr);
 
-    cout << "Enter your choice: ";
-    cin >> choice;
+  cout << "Array: ";
+  printArr(&arr);
 
-    switch (choice) {
-      case 1: {
-        int ele;
-        cout << "Enter the element to push: ";
-        cin >> ele;
-        push(&arr, ele);
-        break;
-      }
-      case 2: {
-        pop(&arr);
-        break;
-      }
-      case 3: {
-        int ele;
-        cout << "Enter the element to shift: ";
-        cin >> ele;
-        shift(&arr, ele);
-        break;
-      }
-      case 4: {
-        unshift(&arr);
-        break;
-      }
-      case 5: {
-        printArr(&arr);
-        break;
-      }
-      case 6: {
-        readArr(&arr);
-        break;
-      }
-      case 7: {
-        int length = len(&arr);
-        cout << "Length of the array: " << length << endl;
-        break;
-      }
-      case 8: {
-        int minimum = min(&arr);
-        cout << "Minimum element: " << minimum << endl;
-        break;
-      }
-      case 9: {
-        int maximum = max(&arr);
-        cout << "Maximum element: " << maximum << endl;
-        break;
-      }
-      case 10: {
-        float average = avg(&arr);
-        cout << "Average of the elements: " << average << endl;
-        break;
-      }
-      case 11: {
-        int index;
-        cout << "Enter the index: ";
-        cin >> index;
-        int element = get(&arr, index);
-        cout << "Element at index " << index << ": " << element << endl;
-        break;
-      }
-      case 12: {
-        int index, ele;
-        cout << "Enter the index: ";
-        cin >> index;
-        cout << "Enter the element to insert: ";
-        cin >> ele;
-        insert(&arr, index, ele);
-        break;
-      }
-      case 13: {
-        int index;
-        cout << "Enter the index: ";
-        cin >> index;
-        rem(&arr, index);
-        break;
-      }
-      case 14: {
-        sort(&arr);
-        cout << "Array sorted successfully." << endl;
-        break;
-      }
-      case 0: {
-        cout << "Exiting..." << endl;
-        break;
-      }
-      default: {
-        cout << "Invalid choice. Please try again." << endl;
-        break;
-      }
-    }
-  } while (choice != 0);
-
+  cout << "Length of the array: " << len(&arr) << endl;
+  cout << "Minimum element of the array: " << min(&arr) << endl;
+  cout << "Maximum element of the array: " << max(&arr) << endl;
+  cout << "Average of the array: " << avg(&arr) << endl;
+  cout << "Enter the index of the element you want to get: ";
+  int index;
+  cin >> index;
+  cout << "Element at index " << index << " is: " << get(&arr, index) << endl;
+  cout << "Enter the index where you want to insert the element: ";
+  int insIndex;
+  cin >> insIndex;
+  cout << "Enter the element you want to insert: ";
+  int insEle;
+  cin >> insEle;
+  insert(&arr, insIndex, insEle);
+  cout << "Array after inserting the element: ";
+  printArr(&arr);
+  cout << "Enter the index of the element you want to remove: ";
+  int remIndex;
+  cin >> remIndex;
+  rem(&arr, remIndex);
+  cout << "Array after removing the element: ";
+  printArr(&arr);
+  sort(&arr);
+  cout << "Array after sorting: ";
+  printArr(&arr);
+  clear(&arr);
+  cout << "Array cleared." << endl;
   return 0;
 }

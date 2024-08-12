@@ -70,7 +70,6 @@ NODE *insert_at_sorted_pos(NODE *p, int data) {
   if (p == NULL)
     p = create(p, data);
   else {
-    sort(p);
     NODE *temp, *temp1;
     temp = p;
     while (temp->next != NULL && temp->next->data < data)
@@ -238,10 +237,12 @@ NODE *merge_sorted(NODE *p1, NODE *p2) {
   if (p2 == NULL)
     return p1;
   else {
-    p1 = merge(p1, p2);
-    p1 = sort(p1);
+    NODE *result;
+    result = NULL;
+    result = merge(p1, p2);
+    result = sort(result);
+    return result;
   }
-  return p1;
 }
 
 int main() {
@@ -252,58 +253,40 @@ int main() {
   Head_1 = insert_at_end(Head_1, 40);
   Head_1 = insert_at_end(Head_1, 30);
   Head_1 = insert_at_end(Head_1, 5);
-
   cout << "Original List: ";
   display(Head_1);
-
   Head_1 = sort(Head_1);
-
   cout << "Sorted List: ";
   display(Head_1);
-
   int data = 25;
   int pos = 3;
   Head_1 = insert_at_pos(Head_1, data, pos);
-
   cout << "List after inserting " << data << " at position " << pos << ": ";
   display(Head_1);
-
   data = 15;
   Head_1 = insert_at_sorted_pos(Head_1, data);
-
   cout << "List after inserting " << data << " at sorted position: ";
   display(Head_1);
-
   Head_1 = delete_at_end(Head_1);
-
   cout << "List after deleting last element: ";
   display(Head_1);
-
   Head_1 = delete_at_beg(Head_1);
-
   cout << "List after deleting first element: ";
   display(Head_1);
-
   pos = 2;
   Head_1 = delete_at_pos(Head_1, pos);
-
   cout << "List after deleting element at position " << pos << ": ";
   display(Head_1);
-
   data = 40;
   Head_1 = delete_at_data(Head_1, data);
-
   cout << "List after deleting element with data " << data << ": ";
   display(Head_1);
-
   int search_data = 30;
   bool found = search(Head_1, search_data);
-
   if (found)
     cout << "Element " << search_data << " found in the list" << endl;
   else
     cout << "Element " << search_data << " not found in the list" << endl;
-
   NODE *Head_2;
   Head_2 = NULL;
   Head_2 = create(Head_2, 50);
@@ -318,10 +301,18 @@ int main() {
   cout << "Merged List: ";
   display(Merged_Head);
 
-  NODE *Sorted_Merged_Head = merge_sorted(Head_1, Head_2);
+  NODE *Head_3;
+  Head_3 = NULL;
+  Head_3 = create(Head_3, 5);
+  Head_3 = insert_at_end(Head_3, 15);
+  Head_3 = insert_at_end(Head_3, 25);
 
-  cout << "Sorted Merged List: ";
-  display(Sorted_Merged_Head);
+  cout << "Third List: ";
+  display(Head_3);
 
+  NODE *Merged_Sorted_Head = merge_sorted(Head_1, Head_3);
+
+  cout << "Merged Sorted List: ";
+  display(Merged_Sorted_Head);
   return 0;
 }
