@@ -9,7 +9,7 @@ void read_sparse_mat(int *mat_ele, int *mat_row, int *mat_col, int n) {
     cin >> mat_row[i];
     cout << "Column no. : ";
     cin >> mat_col[i];
-    cout << "Elemen no. : ";
+    cout << "Element no. : ";
     cin >> mat_ele[i];
   }
 }
