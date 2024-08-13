@@ -42,31 +42,48 @@ void display_sparse_mat(NODE *p, int n, int r, int c) {
       int ele = 0;
       NODE *temp = p;
       while (temp != NULL) {
-        if (temp->row = r && temp->col == c)
+        if (temp->row == i && temp->col == j)
           ele = temp->ele;
-        else
-          temp = temp->next;
+        temp = temp->next;
       }
-      cout << 0 << "  ";
+      if (ele)
+        cout << ele << "  ";
+      else
+        cout << 0 << "  ";
     }
     cout << endl;
   }
 }
 
+NODE *sum_mat(NODE *mat1, NODE *mat2) {
+  NODE *sum = NULL;
+  
+}
+
 int main() {
-  int n, row, col;
+  int n1, n2, row, col;
   NODE *sp_mat1 = NULL;
+  NODE *sp_mat2 = NULL;
   cout << "Enter the number of rows: ";
   cin >> row;
   cout << "Enter the number of columns: ";
   cin >> col;
-  cout << "No. of Element in sparse matrix :";
-  cin >> n;
+  cout << "No. of Element in sparse matrix [1] :";
+  cin >> n1;
+  cout << "No. of Element in sparse matrix [2] :";
+  cin >> n2;
 
-  cout << "Sparse Matrix :" << endl;
-  sp_mat1 = read_sparse_mat(sp_mat1, n);
-  cout << "Sparse Matrix :" << endl;
-  display_sparse_mat(sp_mat1, n, row, col);
+  cout << "Sparse Matrix 1 :" << endl;
+  sp_mat1 = read_sparse_mat(sp_mat1, n1);
+  cout << "Sparse Matrix 2 :" << endl;
+  sp_mat1 = read_sparse_mat(sp_mat2, n2);
+
+  cout << "Sparse Matrix 1 :" << endl;
+  display_sparse_mat(sp_mat1, n1, row, col);
+  cout << "Sparse Matrix 2 :" << endl;
+  display_sparse_mat(sp_mat2, n2, row, col);
+
+  NODE *sum_mat = NULL;
 
   return 0;
 }
