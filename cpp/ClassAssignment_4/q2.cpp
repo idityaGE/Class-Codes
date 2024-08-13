@@ -36,7 +36,7 @@ NODE *read_sparse_mat(NODE *p, int n) {
   return p;
 }
 
-void display_sparse_mat(NODE *p, int n, int r, int c) {
+void display_sparse_mat(NODE *p, int r, int c) {
   for (int i = 0; i < r; i++) {
     for (int j = 0; j < c; j++) {
       int ele = 0;
@@ -57,7 +57,69 @@ void display_sparse_mat(NODE *p, int n, int r, int c) {
 
 NODE *sum_mat(NODE *mat1, NODE *mat2) {
   NODE *sum = NULL;
-  
+  NODE *cp = NULL;
+  while(mat1 != NULL || mat2 != NULL){
+    NODE *temp = new NODE;
+    temp->next = NULL;
+    if(mat1->row < mat2->row || (mat1->row == mat2->row && mat1->col < mat2->col)){
+      temp->col = mat1->col;
+      temp->row = mat1->row;
+      temp->ele = mat1->ele;
+      mat1 = mat1->next;
+    } else if (mat1->row > mat2->row || (mat1->row == mat2->row && mat1->col > mat2->col)){
+      temp->col = mat2->col;
+      temp->row = mat2->row;
+      temp->ele = mat2->ele;
+      mat2 = mat2->next;
+    } else {
+      temp->col = mat1->col;
+      temp->row = mat1->row;
+      temp->ele = mat1->ele +  mat2->ele;
+      mat1 = mat1->next;
+      mat2 = mat2->next;
+    }
+    if(sum == NULL){
+      sum = temp;
+      cp = sum;
+    } else {
+      cp->next = temp;
+      cp = cp->next;
+    }
+  }
+  // For remaining one in mat1 and mat2
+  while (mat1 != NULL) {
+    NODE *newNode = new NODE;
+    newNode->row = mat1->row;
+    newNode->col = mat1->col;
+    newNode->ele = mat1->ele;
+    newNode->next = NULL;
+
+    if (sum == NULL) {
+      sum = newNode;
+      cp = sum;
+    } else {
+      cp->next = newNode;
+      cp = cp->next;
+    }
+    mat1 = mat1->next;
+  }
+  while (mat2 != NULL) {
+    NODE *newNode = new NODE;
+    newNode->row = mat2->row;
+    newNode->col = mat2->col;
+    newNode->ele = mat2->ele;
+    newNode->next = NULL;
+
+    if (sum == NULL) {
+      sum = newNode;
+      cp = sum;
+    } else {
+      cp->next = newNode;
+      cp = cp->next;
+    }
+    mat2 = mat2->next;
+  }
+  return sum;
 }
 
 int main() {
@@ -76,14 +138,17 @@ int main() {
   cout << "Sparse Matrix 1 :" << endl;
   sp_mat1 = read_sparse_mat(sp_mat1, n1);
   cout << "Sparse Matrix 2 :" << endl;
-  sp_mat1 = read_sparse_mat(sp_mat2, n2);
+  sp_mat2 = read_sparse_mat(sp_mat2, n2);
 
   cout << "Sparse Matrix 1 :" << endl;
-  display_sparse_mat(sp_mat1, n1, row, col);
+  display_sparse_mat(sp_mat1, row, col);
   cout << "Sparse Matrix 2 :" << endl;
-  display_sparse_mat(sp_mat2, n2, row, col);
+  display_sparse_mat(sp_mat2, row, col);
 
-  NODE *sum_mat = NULL;
+  NODE *sum = NULL;
+  sum = sum_mat(sp_mat1, sp_mat2);
+  cout << "Sum :" << endl;
+  display_sparse_mat(sum, row, col);
 
   return 0;
 }
