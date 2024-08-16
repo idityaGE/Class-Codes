@@ -1,5 +1,7 @@
+//! Q2 -> Design a data structure in C++ to represent the sparse matrix using linked list. Also write functions to display and add two sparse matrices.
+
 #include <iostream>
-using namespace std;
+    using namespace std;
 
 struct NODE {
   int ele, row, col;

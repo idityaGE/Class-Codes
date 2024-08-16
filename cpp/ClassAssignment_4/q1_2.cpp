@@ -1,10 +1,12 @@
+//! Q1 - Design a data structure in C++ to represent the polynomial equations using linked list. Also design a function at add two polynomial equations and display the polynomial equation.
+
 #include <iostream>
 using namespace std;
-
 struct NODE {
   int data;
   NODE *next;
 };
+
 
 NODE *read_poly(NODE *p, int degree) {
   for (int i = 0; i <= degree; i++) {
@@ -27,7 +29,6 @@ NODE *read_poly(NODE *p, int degree) {
   }
   return p;
 }
-
 void display_poly(NODE *p, int degree) {
   for (int i = degree; i >= 0; i--) {
     NODE *temp = NULL;
@@ -42,7 +43,6 @@ void display_poly(NODE *p, int degree) {
   }
   cout << endl;
 }
-
 NODE *sum_of_poly(NODE *p1, NODE *p2, int degree) {
   NODE *sum = NULL;
   for (int i = degree; i >= 0; i--) {
@@ -66,27 +66,22 @@ NODE *sum_of_poly(NODE *p1, NODE *p2, int degree) {
   }
   return sum;
 }
-
 int main() {
   NODE *p1 = NULL, *p2 = NULL;
   int degree;
   cout << "Enter the degree of the polynomial : ";
   cin >> degree;
-
   cout << "Polynomial 1 : " << endl;
   p1 = read_poly(p1, degree);
   cout << "Polynomial 2 : " << endl;
   p2 = read_poly(p2, degree);
-
   cout << "Polynomial 1 : ";
   display_poly(p1, degree);
   cout << "Polynomial 2 : ";
   display_poly(p2, degree);
-
   NODE *sum = NULL;
-  sum = sum_of_poly(p1,p2,degree);
+  sum = sum_of_poly(p1, p2, degree);
   cout << "Sum of both polynomial : ";
   display_poly(sum, degree);
-
   return 0;
 }
