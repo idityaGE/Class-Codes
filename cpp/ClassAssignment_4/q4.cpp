@@ -1,3 +1,5 @@
+//! Q4-> Write a c++ program to remove duplicates in sorted linked list.
+
 #include <iostream>
 using namespace std;
 
@@ -40,37 +42,42 @@ void display(NODE *p) {
   }
 }
 
-NODE *reverse(NODE *p) {
+NODE *remove_duplicates(NODE *p) {
   if (p == NULL)
     cout << "List is empty" << endl;
   else if (p->next == NULL)
     cout << "List has only one element" << endl;
   else {
-    NODE *prev, *curr, *fut;
-    prev = NULL;
-    curr = p;
-    fut = p->next;
-    while (fut != NULL) {
-      curr->next = prev;
-      prev = curr;
-      curr = fut;
-      fut = fut->next;
+    NODE *temp, *temp1;
+    temp = p;
+    while (temp->next != NULL) {
+      if (temp->data == temp->next->data) {
+        temp1 = temp->next;
+        temp->next = temp->next->next;
+        delete temp1;
+      } else {
+        temp = temp->next;
+      }
     }
-    curr->next = prev;
-    p = curr;
   }
   return p;
 }
 
 int main() {
-  NODE *p;
-  p = NULL;
-  p = create(p, 5);
-  for (int i = 0; i < 5; i++) {
-    p = push(p, i);
-  }
-  display(p);
-  p = reverse(p);
-  display(p);
+  NODE *start = NULL;
+  start = push(start, 1);
+  start = push(start, 1);
+  start = push(start, 2);
+  start = push(start, 3);
+  start = push(start, 3);
+  start = push(start, 3);
+  start = push(start, 4);
+  start = push(start, 5);
+  start = push(start, 5);
+  cout << "Original list: ";
+  display(start);
+  start = remove_duplicates(start);
+  cout << "List after removing duplicates: ";
+  display(start);
   return 0;
 }

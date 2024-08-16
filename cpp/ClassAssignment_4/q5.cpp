@@ -1,3 +1,5 @@
+//! Q5-> Write a c++ program to find the element that is present at the mid length of the linked list.
+
 #include <iostream>
 using namespace std;
 
@@ -40,37 +42,34 @@ void display(NODE *p) {
   }
 }
 
-NODE *reverse(NODE *p) {
+int mid_element(NODE *p) {
   if (p == NULL)
     cout << "List is empty" << endl;
-  else if (p->next == NULL)
-    cout << "List has only one element" << endl;
   else {
-    NODE *prev, *curr, *fut;
-    prev = NULL;
-    curr = p;
-    fut = p->next;
-    while (fut != NULL) {
-      curr->next = prev;
-      prev = curr;
-      curr = fut;
-      fut = fut->next;
+    NODE *slow, *fast;
+    slow = p;
+    fast = p;
+    while (fast != NULL && fast->next != NULL) {
+      slow = slow->next;
+      fast = fast->next->next;
     }
-    curr->next = prev;
-    p = curr;
+    return slow->data;
   }
-  return p;
 }
 
 int main() {
-  NODE *p;
-  p = NULL;
-  p = create(p, 5);
-  for (int i = 0; i < 5; i++) {
-    p = push(p, i);
-  }
-  display(p);
-  p = reverse(p);
-  display(p);
+  NODE *head = NULL;
+  head = push(head, 1);
+  head = push(head, 2);
+  head = push(head, 3);
+  head = push(head, 4);
+  head = push(head, 5);
+  head = push(head, 6);
+
+  cout << "Linked List: ";
+  display(head);
+
+  cout << "Mid Element: " << mid_element(head) << endl;
+
   return 0;
 }
