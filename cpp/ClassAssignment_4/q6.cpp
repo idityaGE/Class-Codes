@@ -114,12 +114,18 @@ int main() {
   front = insert_at_end(front, 3);
   front = insert_at_end(front, 4);
   front = insert_at_end(front, 5);
+  cout << "Original List: ";
   display(front);
   front = insert_at_beg(front, 0);
+  cout << "List after inserting at beginning: ";
   display(front);
 
-  front = insert_at_sorted(front, 6);
+  cout << "List after reversing: ";
+  front = reverse(front);
   display(front);
 
+  cout << "List after inserting in sorted order: ";
+  front = insert_at_sorted(front, 9);
+  display(front);
   return 0;
 }

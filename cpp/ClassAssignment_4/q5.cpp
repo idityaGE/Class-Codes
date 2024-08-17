@@ -65,6 +65,8 @@ int main() {
   head = push(head, 4);
   head = push(head, 5);
   head = push(head, 6);
+  head = push(head, 7);
+  head = push(head, 7);
 
   cout << "Linked List: ";
   display(head);

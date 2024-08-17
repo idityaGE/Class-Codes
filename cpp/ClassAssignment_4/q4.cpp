@@ -66,14 +66,6 @@ NODE *remove_duplicates(NODE *p) {
 int main() {
   NODE *start = NULL;
   start = push(start, 1);
-  start = push(start, 1);
-  start = push(start, 2);
-  start = push(start, 3);
-  start = push(start, 3);
-  start = push(start, 3);
-  start = push(start, 4);
-  start = push(start, 5);
-  start = push(start, 5);
   cout << "Original list: ";
   display(start);
   start = remove_duplicates(start);

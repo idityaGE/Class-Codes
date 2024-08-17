@@ -1,3 +1,5 @@
+//! Q3. Write a c++ program to reverse the linked list.
+
 #include <iostream>
 using namespace std;
 
@@ -69,6 +71,8 @@ int main() {
   for (int i = 0; i < 5; i++) {
     p = push(p, i);
   }
+  p = push(p, 10);
+  p = push(p, 9);
   display(p);
   p = reverse(p);
   display(p);
