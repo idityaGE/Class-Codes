@@ -27,6 +27,10 @@ void Stack::push(int x) {
   
 }
 
+int Stack::pop(){
+  
+}
+
 int main() {
   return 0;
 }
