@@ -2,6 +2,13 @@
 
 #include <iostream>
 using namespace std;
+
+// struct sparse_mat {
+//   int *row;
+//   int *col;
+//   int *ele;
+// };
+
 void read_sparse_mat(int *mat_ele, int *mat_row, int *mat_col, int n) {
   cout << "Enter the elements of sparse matrix along with its row index and column index :" << endl;
   for (int i = 0; i < n; i++) {
