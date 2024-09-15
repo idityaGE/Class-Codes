@@ -38,6 +38,14 @@ struct stack {
   bool isEmpty() {
     return top == nullptr;
   }
+
+  char peek_top() {
+    if (top == nullptr) {
+      cout << "stack is empty" << endl;
+    } else {
+      return top->data;
+    }
+  }
 };
 
 bool syntax_check(string str) {
@@ -58,11 +66,11 @@ bool syntax_check(string str) {
   return st.isEmpty();
 }
 
-int main() {
-  string str = "[ { a + b + ( a / b ) + ( c + ( d + f ) + 2 ) } ]";
-  if (syntax_check(str))
-    cout << "Syntax is correct" << endl;
-  else
-    cout << "Syntax is incorrect" << endl;
-  return 0;
-}
+// int main() {
+//   string str = "[ { a + b + ( a / b ) + ( c + ( d + f ) + 2 ) } ]";
+//   if (syntax_check(str))
+//     cout << "Syntax is correct" << endl;
+//   else
+//     cout << "Syntax is incorrect" << endl;
+//   return 0;
+// }
