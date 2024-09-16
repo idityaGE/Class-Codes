@@ -1,3 +1,8 @@
+/*
+?  Write a program in C++ to check whether the given expression 
+?  have balanced parenthesis (consider only one type of brackets).
+*/
+
 #include <iostream>
 using namespace std;
 

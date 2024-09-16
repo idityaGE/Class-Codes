@@ -1,3 +1,7 @@
+/*
+?  Write a C++ program to convert an infix expression into postfix using stack.
+*/
+
 #include <string.h>
 #include <iostream>
 

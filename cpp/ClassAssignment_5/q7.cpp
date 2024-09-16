@@ -1,5 +1,9 @@
+/*
+?  Write a C++ Program to evaluate a given postfix expression using stack.
+*/
+
 // #include <bits/stdc++.h>
-#include <cmath>  // for pow()
+#include <cmath>
 #include <iostream>
 #include <string>
 #include <unordered_map>

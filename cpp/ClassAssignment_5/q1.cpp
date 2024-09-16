@@ -1,5 +1,10 @@
+/* 
+?  Design a data structure in C++ to implement the Stack using array. 
+?  Implement all stack operations.
+*/
+
 #include <iostream>
-using namespace std;
+    using namespace std;
 
 struct Stack {
  private:
@@ -24,7 +29,7 @@ struct Stack {
   }
 
   int pop() {
-    int x = NULL;
+    int x = -1;
     if (top == -1) {
       cout << "Stack is empty" << endl;
     } else {
@@ -37,7 +42,7 @@ struct Stack {
   int peek(int index) {
     if (index < 0 || index > size - 1 || index > top) {
       cout << "Invalid Index" << endl;
-      return NULL;
+      return s[0];
     } else {
       return s[index];
     }
@@ -60,7 +65,7 @@ struct Stack {
 
   void display() {
     for (int i = top; i >= 0; i--) {
-      cout << s[i] << " | " << flush;
+      cout << s[i] << " | ";
     }
     cout << endl;
   }

@@ -1,3 +1,8 @@
+/*
+?  Design a data structure in C++ to implement the Stack using linked list.
+?  Implement all stack operations.
+*/
+
 #include <iostream>
 using namespace std;
 

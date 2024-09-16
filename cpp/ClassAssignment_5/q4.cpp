@@ -1,3 +1,8 @@
+/*
+?  Write a program in C++ to check whether the given expression 
+?  have balanced parenthesis (consider all types of brackets).
+*/
+
 #include <iostream>
 using namespace std;
 
@@ -66,11 +71,11 @@ bool syntax_check(string str) {
   return st.isEmpty();
 }
 
-// int main() {
-//   string str = "[ { a + b + ( a / b ) + ( c + ( d + f ) + 2 ) } ]";
-//   if (syntax_check(str))
-//     cout << "Syntax is correct" << endl;
-//   else
-//     cout << "Syntax is incorrect" << endl;
-//   return 0;
-// }
+int main() {
+  string str = "[ { a + b + ( a / b ) + ( c + ( d + f ) + 2 ) } ]";
+  if (syntax_check(str))
+    cout << "Syntax is correct" << endl;
+  else
+    cout << "Syntax is incorrect" << endl;
+  return 0;
+}
