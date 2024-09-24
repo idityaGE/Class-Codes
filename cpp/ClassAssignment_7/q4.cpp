@@ -1,5 +1,5 @@
 /*
-Design a Data Structure in C++ to implement the Queue ADT using the linked list.
+  Design a Data Structure in C++ to implement the Queue ADT using the linked list.
 */
 
 #include <iostream>
@@ -80,3 +80,12 @@ int main() {
 
   return 0;
 }
+
+/* **Output**
+
+  1 2 3 4 5 
+  1 dequeued from queue
+  2 dequeued from queue
+  3 4 5
+
+*/

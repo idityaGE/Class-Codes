@@ -72,3 +72,12 @@ int main() {
   q.deQueue();
   return 0;
 }
+
+/* **Output**
+
+  1 2 3 4 5
+  Queue is full
+  1 2 3 4 5
+  2 3 4 5
+
+*/

@@ -22,10 +22,10 @@ class Queue {
 };
 
 void Queue::enQueue(int value) {
-  if(front == -1 && rear == -1) {
+  if (front == -1 && rear == -1) {
     front = rear = 0;
     arr[rear] = value;
-  } else if((rear + 1) % size == front) {
+  } else if ((rear + 1) % size == front) {
     cout << "Queue is full" << endl;
   } else {
     rear = (rear + 1) % size;
@@ -35,10 +35,10 @@ void Queue::enQueue(int value) {
 
 int Queue::deQueue() {
   int temp;
-  if(front == -1 && rear == -1) {
+  if (front == -1 && rear == -1) {
     cout << "Queue is empty" << endl;
     return -1;
-  } else if(front == rear) {
+  } else if (front == rear) {
     temp = arr[front];
     front = rear = -1;
     return temp;
@@ -50,11 +50,11 @@ int Queue::deQueue() {
 }
 
 void Queue::displayQueue() {
-  if(front == -1 && rear == -1) {
+  if (front == -1 && rear == -1) {
     cout << "Queue is empty" << endl;
   } else {
     int i = front;
-    while(i != rear) {
+    while (i != rear) {
       cout << arr[i] << " ";
       i = (i + 1) % size;
     }
@@ -82,3 +82,11 @@ int main() {
 
   return 0;
 }
+
+/* **Output**
+
+  1 2 3 4 5
+  3 4 5
+  3 4 5 6 7
+
+*/

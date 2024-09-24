@@ -25,51 +25,46 @@ pair<string *, int> tokenize(string str) {
   return {tokens, j};
 }
 
-bool isOperator(char c) {
-  return c == '+' || c == '-' || c == '*' || c == '/';
+bool isNum(char c) {
+  return c >= '0' && c <= '9';
 }
 
-int caculate(int a, int b, char op) {
-  switch (op) {
-    case '+':
-      return a + b;
-    case '-':
-      return a - b;
-    case '*':
-      return a * b;
-    case '/':
-      return a / b;
-    default:
-      return 0;
+int *sepInt(string *tokens, int n) {
+  int *arr = new int[n];
+  for (int i = 0; i < n; i++) {
+    if (isNum(tokens[i][0])) {
+      arr[i] = stoi(tokens[i]);
+    } else {
+      arr[i] = -99;
+    }
   }
-}
-
-int postfixEvaluation(string postfix) {
-  pair<string *, int> tokens = tokenize(postfix);
-  cout << "Tokens: | ";
-  for (int i = 0; i < tokens.second; i++)
-    cout << tokens.first[i] << " | ";
-  cout << endl;
-  int *stack = new int[tokens.second];
-  int top = -1;
-  for (int i = 0; i < tokens.second; i++) {
-    if (isOperator(tokens.first[i][0])) {
-      int b = stack[top--];
-      int a = stack[top--];
-      stack[++top] = caculate(a, b, tokens.first[i][0]);
-    } else
-      stack[++top] = stoi(tokens.first[i]);
-  }
-  if (top != 0) {
-    cout << "Invalid postfix expression" << endl;
-    return -1;
-  }
-  return stack[top];
+  return arr;
 }
 
 int main() {
   string postfix = "25 38 * 5 4 *";
   cout << "Postfix: " << postfix << endl;
-  cout << "Result: " << postfixEvaluation(postfix) << endl;
+
+  pair<string *, int> tokens = tokenize(postfix);
+
+  cout << "Tokens: ";
+  for (int i = 0; i < tokens.second; i++) {
+    cout << "'" << tokens.first[i] << "'" << ", ";
+  }
+
+  int *arr = sepInt(tokens.first, tokens.second);
+
+  cout << endl << "Integers: ";
+  for (int i = 0; i < tokens.second; i++) {
+    cout << arr[i] << ", ";
+  }
   return 0;
 }
+
+/* **Output**
+
+  Postfix: 25 38 * 5 4 *
+  Tokens: '25', '38', '*', '5', '4', '*',
+  Integers: 25, 38, -99, 5, 4, -99,
+  
+*/

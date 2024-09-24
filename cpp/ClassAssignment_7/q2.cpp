@@ -77,3 +77,15 @@ int main() {
   q.displayQueue();
   return 0;
 }
+
+/* **Output**
+
+  1 2 3 4 5
+  Queue is full
+  1 2 3 4 5
+  3 4 5
+  Queue is full
+  Queue is full
+  3 4 5
+
+*/
