@@ -139,3 +139,12 @@ int main() {
 
   return 0;
 }
+
+/* Output:
+
+  Queue: 1 2 3 4 5
+  Queue: 3 4 5
+  Queue: 3 4 5 6 7
+  Queue: 4 5 6 7
+
+*/

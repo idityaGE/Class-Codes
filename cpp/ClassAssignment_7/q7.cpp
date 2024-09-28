@@ -39,11 +39,11 @@ class PriorityQueue {
     newNode->next = NULL;
 
     if (priority == 'H') {
-      push_back(High, newNode); 
+      push_back(High, newNode);
     } else if (priority == 'N') {
-      push_back(Normal, newNode); 
+      push_back(Normal, newNode);
     } else if (priority == 'L') {
-      push_back(Low, newNode); 
+      push_back(Low, newNode);
     } else {
       cout << "Invalid priority" << endl;
     }
@@ -55,7 +55,7 @@ class PriorityQueue {
       return -1;
     } else {
       Node* temp = Head;
-      Head = Head->next; 
+      Head = Head->next;
       int data = temp->data;
       delete temp;
       return data;
@@ -64,11 +64,11 @@ class PriorityQueue {
 
   int dequeue(char priority) {
     if (priority == 'H') {
-      return remove(High); 
+      return remove(High);
     } else if (priority == 'N') {
-      return remove(Normal); 
+      return remove(Normal);
     } else if (priority == 'L') {
-      return remove(Low); 
+      return remove(Low);
     } else {
       cout << "Invalid priority" << endl;
       return -1;
@@ -123,7 +123,21 @@ int main() {
   cout << pq.dequeue('H') << endl;
   cout << pq.dequeue('N') << endl;
   cout << pq.dequeue('L') << endl;
-  cout << pq.dequeue('H') << endl; 
+  cout << pq.dequeue('H') << endl;
 
   return 0;
 }
+
+/* Output:
+  High priority: 1 4
+  Normal priority: 2 5
+  Low priority: 3 6
+  1
+  2
+  3
+  4
+  5
+  6
+  Queue is empty
+  -1
+*/
