@@ -17,10 +17,6 @@ class Stack {
     top = -1;
   }
 
-  ~Stack() {
-    delete[] arr;
-  }
-
   void push(int data) {
     if (top == size - 1) {
       cout << "Stack if Full" << endl;
@@ -76,11 +72,6 @@ class Queue {
   Queue(int size) {
     s1 = new Stack(size);
     s2 = new Stack(size);
-  }
-
-  ~Queue() {
-    delete s1;
-    delete s2;
   }
 
   void enqueue(int data) {
@@ -144,7 +135,7 @@ int main() {
 
   Queue: 1 2 3 4 5
   Queue: 3 4 5
-  Queue: 3 4 5 6 7
+  Queue: 3 4 5 6 7i
   Queue: 4 5 6 7
 
 */
