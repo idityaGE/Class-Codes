@@ -8,6 +8,7 @@
     "vector": "cpp",
     "iostream": "cpp",
     "stack": "cpp",
-    "ostream": "cpp"
+    "ostream": "cpp",
+    "unordered_map": "cpp"
   }
 }
