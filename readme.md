@@ -6,24 +6,30 @@ Welcome to the Programming Class Assignments Repository! This repository contain
 
 ```bash
 class-assignments/
-  |- C/
-    |-- C_Assignment_3/
-    |-- C_Assignment_4/
-    |-- C_Assignment_5/
-    |-- C_Assignment_6/
-    |-- C_Assignment_7/
-    |-- C_Assignment_8/
-    |-- C_Assignment_9/
-    |-- examQue/
-    |-- fileHandling/
-    |-- PDF/
-  |- C++/
-    |-- Array/
-    |-- ClassAssignment_1/
-    |-- ClassAssignment_2/
-    |-- ClassAssignment_3/
-    |-- LinkList/
-    |-- vector/
+  └── 📁C/
+      └── 📁C_Assignment_3/
+      └── 📁C_Assignment_4/
+      └── 📁C_Assignment_5/
+      └── 📁C_Assignment_6/
+      └── 📁C_Assignment_7/
+      └── 📁C_Assignment_8/
+      └── 📁C_Assignment_9/
+      └── 📁examQue/
+      └── 📁fileHandling/
+      └── 📁PDF/
+  └── 📁cpp
+      └── 📁Array
+      └── 📁ClassAssignment_1
+      └── 📁ClassAssignment_2
+      └── 📁ClassAssignment_3
+      └── 📁ClassAssignment_4
+      └── 📁ClassAssignment_5
+      └── 📁ClassAssignment_6
+      └── 📁ClassAssignment_7
+      └── 📁ClassAssignment_8
+      └── 📁LinkList
+      └── 📁Stack
+      └── 📁vector
   |- readme.md
   |- .gitignore
 ```
