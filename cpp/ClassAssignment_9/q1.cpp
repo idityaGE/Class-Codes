@@ -1,92 +1,110 @@
 #include <iostream>
 #include <queue>
-#include <unordered_map>
-#include <vector>
-
 using namespace std;
 
-// Node structure to represent a tree node
-struct TreeNode {
+class Node {
+ public:
   int data;
-  vector<TreeNode*> children;  // Vector to hold children, as the order is unknown
-
-  // Constructor to initialize a node
-  TreeNode(int value) {
-    data = value;
-  }
+  Node* child;
+  Node* sibling;
+  Node(int d)
+      : data(d), child(nullptr), sibling(nullptr) {}
 };
 
-// Class representing the Tree
 class Tree {
- private:
-  TreeNode* root;                         // Root node of the tree
-  unordered_map<int, TreeNode*> nodeMap;  // For quick access to nodes by their values
+  Node* root;
 
  public:
-  Tree() {
-    root = nullptr;
+  Tree()
+      : root(nullptr) {}
+
+  void create(int d) {
+    if (root == nullptr) root = new Node(d);
   }
 
-  // Function to add a node as a child of a specific parent node
-  void addNode(int parentValue, int childValue) {
-    TreeNode* newNode = new TreeNode(childValue);
+  void insert_child(int parentData, int childData) {
+    Node* parentNode = search(root, parentData);
+    if (parentNode) {
+      // Check for duplicate child
+      Node* temp = parentNode->child;
+      while (temp) {
+        if (temp->data == childData) {
+          cout << "Child " << childData << " already exists under parent " << parentData << endl;
+          return;
+        }
+        temp = temp->sibling;
+      }
 
-    // If it's the first node, set it as the root
-    if (!root) {
-      root = newNode;
-      nodeMap[childValue] = newNode;
-      cout << "Node " << childValue << " added as the root." << endl;
-      return;
-    }
-
-    // Find the parent node
-    if (nodeMap.find(parentValue) != nodeMap.end()) {
-      TreeNode* parentNode = nodeMap[parentValue];
-      parentNode->children.push_back(newNode);
-      nodeMap[childValue] = newNode;  // Add new node to map
-      cout << "Node " << childValue << " added as a child of " << parentValue << "." << endl;
+      Node* newNode = new Node(childData);
+      if (!parentNode->child) {
+        parentNode->child = newNode;
+      } else {
+        temp = parentNode->child;
+        while (temp->sibling) {
+          temp = temp->sibling;
+        }
+        temp->sibling = newNode;
+      }
+      cout << "Child " << childData << " added to parent " << parentData << endl;
     } else {
-      cout << "Parent node " << parentValue << " not found." << endl;
+      cout << "Parent node with data " << parentData << " not found." << endl;
     }
   }
 
-  // Function to display the tree in level order
-  void displayLevelOrder() {
-    if (!root) {
-      cout << "Tree is empty." << endl;
-      return;
-    }
+  Node* search(Node* node, int data) {
+    if (node == nullptr) return nullptr;
+    if (node->data == data) return node;
+    Node* found = search(node->child, data);
+    if (found) return found;
+    return search(node->sibling, data);
+  }
 
-    queue<TreeNode*> q;
-    q.push(root);
-
-    while (!q.empty()) {
-      TreeNode* current = q.front();
-      q.pop();
+  void display() {
+    if (root == nullptr) return;
+    queue<Node*> qq;
+    qq.push(root);
+    while (!qq.empty()) {
+      Node* current = qq.front();
+      qq.pop();
       cout << current->data << " ";
-
-      // Add all children to the queue
-      for (TreeNode* child : current->children) {
-        q.push(child);
+      Node* child = current->child;
+      while (child) {
+        qq.push(child);
+        child = child->sibling;
       }
     }
     cout << endl;
   }
+
+  void insert() {
+    int parentData, childData;
+    cout << "Enter the parent node: ";
+    cin >> parentData;
+    cout << "Enter the value of child node: ";
+    cin >> childData;
+    if (root == nullptr) {
+      create(parentData);
+      insert_child(parentData, childData);
+    } else {
+      insert_child(parentData, childData);
+    }
+  }
 };
 
 int main() {
-  Tree tree;
+  Tree t;
+  t.create(1);
+  t.insert_child(1, 3);
+  t.insert_child(1, 3);  // This will now show a message about the duplicate
+  t.insert_child(2, 4);  // Parent 2 doesn't exist, this will give a warning
+  t.insert_child(2, 5);  // Same as above
 
-  tree.addNode(-1, 1);  // Adding root node
-  tree.addNode(1, 2);
-  tree.addNode(1, 3);
-  tree.addNode(2, 4);
-  tree.addNode(2, 5);
-  tree.addNode(3, 6);
-  tree.addNode(3, 7);
+  t.display();
 
-  cout << "Tree in level order: ";
-  tree.displayLevelOrder();
-
+  t.insert();
+  t.insert();
+  t.insert();
+  t.insert();
+  t.display();
   return 0;
 }
