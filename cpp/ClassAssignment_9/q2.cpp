@@ -13,15 +13,32 @@ class TreeNode {
       : data(x), left(nullptr), right(nullptr) {}
 };
 
+/**
+ * Inserts a node with data into a binary search tree.
+ *
+ * If the tree is empty, return a new node with the given data.
+ * If the given data is less than the root's data, insert into the left subtree.
+ * If the given data is greater than the root's data, insert into the right subtree.
+ * If the given data is equal to the root's data, do nothing (no duplicates allowed).
+ *
+ * @param root the current root of the tree
+ * @param data the data to insert
+ * @return the new root of the tree
+ */
 TreeNode *insert(TreeNode *root, int data) {
   if (!root) {
+    // If the tree is empty, create a new node with the given data
     TreeNode *temp = new TreeNode(data);
     return temp;
   }
-  if (data < root->data)
+  if (data < root->data) {
+    // If the given data is less than the root's data, insert into the left subtree
     root->left = insert(root->left, data);
-  else if (data > root->data)  // no duplicate allowed
+  } else if (data > root->data) {
+    // If the given data is greater than the root's data, insert into the right subtree
     root->right = insert(root->right, data);
+  }
+  // If the given data is equal to the root's data, do nothing (no duplicates allowed)
   return root;
 }
 
@@ -38,46 +55,33 @@ TreeNode *delete_Treenode(TreeNode *root, int x) {
   if (!root) return nullptr;
   if (root->data > x) {
     root->left = delete_Treenode(root->left, x);
-    return root;
   } else if (root->data < x) {
     root->right = delete_Treenode(root->right, x);
-    return root;
   } else {
-    // leaf Treenode
-    if (!root->left && !root->right) {
-      delete root;
-      return nullptr;
-    }
-    // on child exist
-    else if (!root->right) {
-      TreeNode *temp = root->left;
-      delete root;
-      return temp;
-    } else if (!root->left) {
+    if (!root->left) {
       TreeNode *temp = root->right;
       delete root;
       return temp;
-    }
-    // both child exist
-    else {
-      TreeNode *child = root->left;
-      TreeNode *parent = root;
-      while (child->right) {
-        parent = child;
-        child = child->right;
-      }
-      if (root != parent) {
-        parent->right = child->left;
-        child->left = root->left;
-        child->right = root->right;
-        delete root;
-        return child;
-      }
-      child->right = root->right;
+    } else if (!root->right) {
+      TreeNode *temp = root->left;
       delete root;
-      return child;
+      return temp;
     }
+    TreeNode *successor = root->right;
+    TreeNode *parent = root;
+    while (successor->left) {
+      parent = successor;
+      successor = successor->left;
+    }
+    root->data = successor->data;
+    if (parent != root) {
+      parent->left = successor->right;
+    } else {
+      root->right = successor->right;
+    }
+    delete successor;
   }
+  return root;
 }
 
 void display_non_rec(TreeNode *root) {
@@ -101,6 +105,7 @@ void display(TreeNode *root) {
   cout << root->data << "  ";
   display(root->right);
 }
+
 
 int main() {
   TreeNode *root = nullptr;
