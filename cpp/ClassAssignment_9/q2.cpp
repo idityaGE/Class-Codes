@@ -13,18 +13,6 @@ class TreeNode {
       : data(x), left(nullptr), right(nullptr) {}
 };
 
-/**
- * Inserts a node with data into a binary search tree.
- *
- * If the tree is empty, return a new node with the given data.
- * If the given data is less than the root's data, insert into the left subtree.
- * If the given data is greater than the root's data, insert into the right subtree.
- * If the given data is equal to the root's data, do nothing (no duplicates allowed).
- *
- * @param root the current root of the tree
- * @param data the data to insert
- * @return the new root of the tree
- */
 TreeNode *insert(TreeNode *root, int data) {
   if (!root) {
     // If the tree is empty, create a new node with the given data
