@@ -10,6 +10,7 @@ int sumofN(int n) {
 
 int main() {
   int n;
+  // sum = n*(n+1)/2
   cout << "Enter the number : ";
   cin >> n;
   cout << "Sum of " << n << " natural number :" << sumofN(n) << endl;

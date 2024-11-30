@@ -2,8 +2,7 @@
 
 #include <iostream>
 using namespace std;
-int main()
-{
+int main() {
   const double STATE_GST_RATE = 0.04;
   const double COUNTY_GST_RATE = 0.02;
 

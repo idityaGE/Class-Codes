@@ -1,13 +1,13 @@
 /**
-  Design a data structure to store the operator precedence and associativity information.
-  For example following information needs to be stored:
-
-  Operator | Precedence | Associativity
-   ^     |      3     |     1
-   /     |      2     |     0
-   *     |      2     |     0
-   -     |      1     |     0
-   +     |      1     |     0
+*  Design a data structure to store the operator precedence and associativity information.
+*  For example following information needs to be stored:
+*
+*  Operator | Precedence | Associativity
+*     ^     |      3     |     1
+*     /     |      2     |     0
+*     *     |      2     |     0
+*     -     |      1     |     0
+*     +     |      1     |     0
 **/
 
 #include <iostream>
@@ -96,12 +96,12 @@ void push_table(Table &t) {
   t.push('^', 3, 1);
 }
 
-int main() {
-  // 0 --> Left to Right, 1 --> Right to Left
-  Table t(10);
-  push_table(t);
-  t.display();
-  cout << endl;
+// int main() {
+//   // 0 --> Left to Right, 1 --> Right to Left
+//   Table t(10);
+//   push_table(t);
+//   t.display();
+//   cout << endl;
 
-  return 0;
-}
+//   return 0;
+// }
