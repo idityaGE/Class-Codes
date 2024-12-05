@@ -38,6 +38,7 @@ int evaluate_postfix(string postf, unordered_map<char, int>& values) {
   }
   return int(st.peek_top());
 }
+
 int main() {
   string postfix = "abc*+";
   unordered_map<char, int> values;

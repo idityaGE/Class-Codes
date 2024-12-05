@@ -1,6 +1,6 @@
 /*
-Write a program to implement the Hash Table ADT with collision handling mechanism
-using chaining method.
+  Write a program to implement the Hash Table ADT with collision handling mechanism
+  using chaining method.
 */
 
 #include <iostream>

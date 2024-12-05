@@ -55,6 +55,7 @@ TreeNode *delete_Treenode(TreeNode *root, int x) {
       delete root;
       return temp;
     }
+    
     TreeNode *successor = root->right;
     TreeNode *parent = root;
     while (successor->left) {

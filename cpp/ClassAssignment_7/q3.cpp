@@ -1,6 +1,6 @@
 /*
-  Design a Data Structure in C++ to implement the Queue ADT using an Array [Note: use
-  only one variable to point either on front or rear to implement].
+*  Design a Data Structure in C++ to implement the Queue ADT using an Array [Note: use
+*  only one variable to point either on front or rear to implement].
 */
 #include <iostream>
 using namespace std;

@@ -1,6 +1,6 @@
 /*
-Write a program in C++ to implement the Hash Table using array. Design the ADT for
-hash table and implement.
+  Write a program in C++ to implement the Hash Table using array. Design the ADT for
+  hash table and implement.
 */
 
 #include <iostream>
