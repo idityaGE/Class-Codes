@@ -64,6 +64,15 @@ NODE *reverse(NODE *p) {
   return p;
 }
 
+NODE *reverse_rec(NODE *head) {
+  if (!head || !head->next) return head;
+  NODE *newNode = reverse_rec(head->next);
+  head->next->next = head;
+  head->next = nullptr;
+  return newNode;
+}
+
+
 int main() {
   NODE *p;
   p = NULL;

@@ -1,13 +1,11 @@
 #include <iostream>
 using namespace std;
-int main()
-{
+int main() {
   int n;
   cout << "Enter the number : ";
   cin >> n;
   int ans = 0, rem, mul = 1;
-  while (n)
-  {
+  while (n) {
     rem = n % 2;
     n /= 2;
     rem = rem ^ 1;

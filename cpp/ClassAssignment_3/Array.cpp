@@ -114,11 +114,12 @@ float avg(Array *a) {
 int get(Array *a, int index) {
   if (a->cp == -1)
     cout << "Array is empty" << endl;
+  return -1;
   else if (index > a->cp || index < 0) {
     cout << "Wrong Index" << endl;
-    return 0;
-  } else
-    return a->arr[index];
+    return -1;
+  }
+  else return a->arr[index];
 }
 
 void insert(Array *a, int index, int ele) {
@@ -164,7 +165,7 @@ void sort(Array *a) {
   }
 }
 
-void clear(Array *a){
+void clear(Array *a) {
   delete[] a->arr;
   a->cp = -1;
   cout << "Array deleted successfully." << endl;

@@ -66,6 +66,7 @@ int main() {
   int r;
   cout << "Enter the number of rows and columns (square matrix) : ";
   cin >> r;
+  
   int *dArr = new int[r];
   cout << "Input diagonal matrix : " << endl;
   input_Diagonal_matrix(dArr, r);

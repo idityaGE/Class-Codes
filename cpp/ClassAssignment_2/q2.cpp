@@ -60,19 +60,24 @@ int main() {
   int r;
   cout << "Enter the number of rows and columns (square matrix) : ";
   cin >> r;
-  int n = r * (r + 1) / 2;
+
+  int n = r * (r + 1) / 2;  // n is the number of elements in lower diagonal matrix
   int *ld_mat = new int[n];
   input_lower_diagonal_matrix(ld_mat, n);
+
   int **sMat;
   sMat = new int *[r];
   for (int i = 0; i < r; i++)
     sMat[i] = new int[r];
   cout << "Input simple matrix : " << endl;
   read_matrix(sMat, r);
+
   cout << "Lower Diagonal Matrix : " << endl;
   print_lower_diagonal_matrix(ld_mat, r);
+
   cout << "Simple Matrix : " << endl;
   display_matrix(sMat, r);
+
   add_matrix(ld_mat, sMat, r);
   delete[] ld_mat;
   for (int i = 0; i < r; i++)

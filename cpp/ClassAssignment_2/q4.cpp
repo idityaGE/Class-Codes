@@ -1,12 +1,11 @@
 //! Q4-> Write a C++ program to represent the polynomial equation using structure. Also, write the function to evaluate the polynomial equation for a given value of x.
 
-#include <cmath>
 #include <iostream>
 using namespace std;
 
 struct Polynomial {
-  int degree;
-  int *coefficients;
+  int degree;  // degree of the polynomial
+  int *coefficients;  // pointer to array to store the coefficients of the polynomial
 };
 
 double cal_poly(Polynomial &poly, double x) {
