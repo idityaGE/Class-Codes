@@ -112,14 +112,14 @@ float avg(Array *a) {
 }
 
 int get(Array *a, int index) {
-  if (a->cp == -1)
+  if (a->cp == -1) {
     cout << "Array is empty" << endl;
-  return -1;
-  else if (index > a->cp || index < 0) {
+    return -1;
+  } else if (index > a->cp || index < 0) {
     cout << "Wrong Index" << endl;
     return -1;
-  }
-  else return a->arr[index];
+  } else
+    return a->arr[index];
 }
 
 void insert(Array *a, int index, int ele) {
